@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientsTable extends Migration {
+class CreateProjectUserTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,13 @@ class CreateClientsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('clients', function(Blueprint $table)
-		{   
+		Schema::create('project_user', function(Blueprint $table)
+		{
                         $table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->timestamps();
-                        $table->string('name');
-                        $table->text('description')->nullable();
-                        $table->string('website')->nullable();
+			$table->integer('user_id')->unsigned();
+                        $table->integer('project_id')->unsigned();
+                        $table->timestamps();
 		});
 	}
 
@@ -30,7 +29,7 @@ class CreateClientsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('clients');
+		Schema::drop('project_user');
 	}
 
 }
