@@ -16,9 +16,9 @@ class Project extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'projects';
         
-        public function user()
+        public function users()
         {
-            return $this->belongsTo('User');
+            return $this->belongsToMany('User');
         }
         
         public function client()
