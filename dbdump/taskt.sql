@@ -19,6 +19,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `taskt`
 --
+CREATE DATABASE IF NOT EXISTS `taskt`;
+
+USE `taskt`;
 
 -- --------------------------------------------------------
 
