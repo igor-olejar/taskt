@@ -13,5 +13,9 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+        if (Auth::check()) {
+            return View::make('home');
+        }
+        
+	return View::make('login');
 });
