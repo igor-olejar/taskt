@@ -22,6 +22,8 @@ class CreateProjectsTable extends Migration {
                         $table->integer('client')->unsigned();
                         $table->dateTime('start_date')->nullable();
                         $table->dateTime('end_date')->nullable();
+                        $table->integer('rate')->nullable();
+                        $table->string('roundup', 15)->nullable();
 		});
 	}
 

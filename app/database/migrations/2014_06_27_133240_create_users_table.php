@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration {
                     $table->string('email');
                     $table->unique('email');
                     $table->string('company')->nullable();
+                    $table->string('remember_token', 100)->nullable();
 		});
 	}
 
