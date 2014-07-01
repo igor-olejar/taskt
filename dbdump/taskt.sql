@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `checkins` (
 --
 
 INSERT INTO `checkins` (`start_date`, `id`, `created_at`, `updated_at`, `task_id`, `start`, `end`) VALUES
-(NULL, 1, '2014-06-27 13:50:22', '2014-06-27 13:50:22', 1, 1403877022, 1403880622);
+(NULL, 1, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 1, 1404119660, 1404123260);
 
 -- --------------------------------------------------------
 
@@ -61,16 +61,16 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `description` text COLLATE utf8_unicode_ci,
   `website` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `clients`
 --
 
 INSERT INTO `clients` (`id`, `created_at`, `updated_at`, `name`, `description`, `website`) VALUES
-(10, '2014-06-27 13:50:22', '2014-06-27 13:50:22', 'Happy Company', 'We are very happy', 'http://www.happy.com'),
-(11, '2014-06-27 13:50:22', '2014-06-27 13:50:22', 'Sad Company', 'We are very sad', 'http://www.sad.com'),
-(12, '2014-06-27 13:50:22', '2014-06-27 13:50:22', 'Third Company', '', '');
+(1, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'Happy Company', 'We are very happy', 'http://www.happy.com'),
+(2, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'Sad Company', 'We are very sad', 'http://www.sad.com'),
+(3, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'Third Company', '', '');
 
 -- --------------------------------------------------------
 
@@ -110,16 +110,18 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `client` int(10) unsigned NOT NULL,
   `start_date` datetime DEFAULT NULL,
   `end_date` datetime DEFAULT NULL,
+  `rate` int(11) DEFAULT NULL,
+  `roundup` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `created_at`, `updated_at`, `name`, `description`, `client`, `start_date`, `end_date`) VALUES
-(7, '2014-06-27 13:50:22', '2014-06-27 13:50:22', 'Project1', 'I am the first project ever', 1, '2014-06-12 00:00:00', '2014-07-12 00:00:00'),
-(8, '2014-06-27 13:50:22', '2014-06-27 13:50:22', 'Project2', 'I am the second project', 1, '2014-06-10 00:00:00', '2015-07-10 00:00:00');
+INSERT INTO `projects` (`id`, `created_at`, `updated_at`, `name`, `description`, `client`, `start_date`, `end_date`, `rate`, `roundup`) VALUES
+(1, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'Project1', 'I am the first project ever', 1, '2014-06-12 00:00:00', '2014-07-12 00:00:00', NULL, NULL),
+(2, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'Project2', 'I am the second project', 1, '2014-06-10 00:00:00', '2015-07-10 00:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -134,15 +136,15 @@ CREATE TABLE IF NOT EXISTS `project_user` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `project_user`
 --
 
 INSERT INTO `project_user` (`id`, `user_id`, `project_id`, `created_at`, `updated_at`) VALUES
-(7, 2, 1, '2014-06-27 13:50:22', '2014-06-27 13:50:22'),
-(8, 2, 2, '2014-06-27 13:50:22', '2014-06-27 13:50:22');
+(1, 2, 1, '2014-06-30 09:14:20', '2014-06-30 09:14:20'),
+(2, 2, 2, '2014-06-30 09:14:20', '2014-06-30 09:14:20');
 
 -- --------------------------------------------------------
 
@@ -161,16 +163,16 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `end_date` datetime DEFAULT NULL,
   `status` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'todo',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `tasks`
 --
 
 INSERT INTO `tasks` (`id`, `created_at`, `updated_at`, `description`, `user_id`, `project_id`, `start_date`, `end_date`, `status`) VALUES
-(4, '2014-06-27 13:50:22', '2014-06-27 13:50:22', 'I am task one', 2, 1, '2014-06-27 00:00:00', '0000-00-00 00:00:00', 'in progress'),
-(5, '2014-06-27 13:50:22', '2014-06-27 13:50:22', 'I am task two', 2, 1, '2014-06-27 00:00:00', '2014-06-27 00:00:00', 'completed'),
-(6, '2014-06-27 13:50:22', '2014-06-27 13:50:22', 'I am task one', 2, 2, NULL, NULL, 'todo');
+(1, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'I am task one', 2, 1, '2014-06-27 00:00:00', '0000-00-00 00:00:00', 'in progress'),
+(2, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'I am task two', 2, 1, '2014-06-27 00:00:00', '2014-06-27 00:00:00', 'completed'),
+(3, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'I am task one', 2, 2, NULL, NULL, 'todo');
 
 -- --------------------------------------------------------
 
@@ -188,16 +190,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `company` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `created_at`, `updated_at`, `username`, `password`, `firstname`, `lastname`, `email`, `company`) VALUES
-(4, '2014-06-27 13:50:22', '2014-06-27 13:50:22', 'igor', 'pwd', 'Igor', 'Olejar', 'igor.olejar@gmail.com', 'TeknoStan Limited');
+INSERT INTO `users` (`id`, `created_at`, `updated_at`, `username`, `password`, `firstname`, `lastname`, `email`, `company`, `remember_token`) VALUES
+(1, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'igor', '$2y$10$GRwfCQ38nNz/HfAB0g7/lOHrBFTRBZM3bzSp5x3sG7dE64.tbTuOq', 'Igor', 'Olejar', 'igor.olejar@gmail.com', 'TeknoStan Limited', NULL);
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
