@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function()
-{
-        if (Auth::check()) {
-            return View::make('home');
-        }
-        
-	return View::make('login');
-});
+Route::get("/", array(
+    'before'    => 'auth',
+    'uses'      =>  'HomeController@showOptions'
+));
+
+Route::get("login", array('uses' => 'LoginController@showLogin'));
+Route::post("login", array('uses' => 'LoginController@doLogin'));
+Route::post("logout", array('usees' => 'LoginController@doLogout'));
