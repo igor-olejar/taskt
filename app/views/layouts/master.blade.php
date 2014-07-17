@@ -35,6 +35,9 @@
                     <ul class="nav navbar-nav">
                         <li @if ($title == 'Home') class="active" @endif><a href="/">Home</a></li>
                         <li @if ($title == 'About') class="active" @endif><a href="about">About</a></li>
+                        @if (Auth::check())
+                            <li><a href="logout">Log out</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

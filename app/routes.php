@@ -23,3 +23,8 @@ Route::post("logout", array('usees' => 'LoginController@doLogout'));
 Route::get("about", function(){
     return View::make('about')->withTitle('About');
 });
+
+Route::get("logout", function(){
+    Auth::logout();
+    return Redirect::to('login');
+});
