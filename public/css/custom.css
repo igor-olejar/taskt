@@ -6,4 +6,14 @@
         This holds the general stylings for the application
 */
 
+/* Navbar */
+.navbar {
+    border-radius: 0;
+}
 
+/* Lists */
+.basic-list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.5em;
+}
