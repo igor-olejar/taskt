@@ -28,3 +28,7 @@ Route::get("logout", function(){
     Auth::logout();
     return Redirect::to('login');
 });
+
+Route::get("projects", array('uses' => 'ProjectController@showProjects'));
+Route::get("clients", array('uses' => 'ClientController@showClients'));
+Route::get("tasks", array('uses' => 'TaskController@showTasks'));
