@@ -27,7 +27,11 @@
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->client->name }}</td>
                         <td>
-                            {{ $project->end_date }}
+                            @if (strtotime($project->end_date) < time())
+                                Closed
+                            @else
+                                Open
+                            @endif
                         </td>
                         <td>
                             <a href="projects/edit/{{ $project->id }}">Edit</a> / 

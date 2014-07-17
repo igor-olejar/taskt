@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci,
-  `client` int(10) unsigned NOT NULL,
+  `client_id` int(10) unsigned NOT NULL,
   `start_date` datetime DEFAULT NULL,
   `end_date` datetime DEFAULT NULL,
   `rate` int(11) DEFAULT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `created_at`, `updated_at`, `name`, `description`, `client`, `start_date`, `end_date`, `rate`, `roundup`) VALUES
+INSERT INTO `projects` (`id`, `created_at`, `updated_at`, `name`, `description`, `client_id`, `start_date`, `end_date`, `rate`, `roundup`) VALUES
 (1, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'Project1', 'I am the first project ever', 1, '2014-06-12 00:00:00', '2014-07-12 00:00:00', NULL, NULL),
 (2, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'Project2', 'I am the second project', 1, '2014-06-10 00:00:00', '2015-07-10 00:00:00', NULL, NULL);
 
@@ -200,9 +200,4 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `created_at`, `updated_at`, `username`, `password`, `firstname`, `lastname`, `email`, `company`, `remember_token`) VALUES
-(1, '2014-06-30 09:14:20', '2014-06-30 09:14:20', 'igor', '$2y$10$GRwfCQ38nNz/HfAB0g7/lOHrBFTRBZM3bzSp5x3sG7dE64.tbTuOq', 'Igor', 'Olejar', 'igor.olejar@gmail.com', 'TeknoStan Limited', NULL);
-
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+(1, '2014-06-30 09:14:20', '2014-07-17 07:38:12', 'igor', '$2y$10$GRwfCQ38nNz/HfAB0g7/lOHrBFTRBZM3bzSp5x3sG7dE64.tbTuOq', 'Igor', 'Olejar', 'igor.olejar@gmail.com', 'TeknoStan Limited', 'ykavtNfCMU5zjMDL4Rrk93B2bWHTmCP3WdHLAh74PxRKXpIAXxjpind7kz9m');

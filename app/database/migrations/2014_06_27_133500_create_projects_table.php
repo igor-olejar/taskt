@@ -19,7 +19,7 @@ class CreateProjectsTable extends Migration {
 			$table->timestamps();
                         $table->string('name');
                         $table->text('description')->nullable();
-                        $table->integer('client')->unsigned();
+                        $table->integer('client_id')->unsigned();
                         $table->dateTime('start_date')->nullable();
                         $table->dateTime('end_date')->nullable();
                         $table->integer('rate')->nullable();
