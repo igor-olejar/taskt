@@ -17,3 +17,8 @@
     padding-left: 0;
     font-size: 1.5em;
 }
+
+/* Paragraphs */
+.contextual {
+    padding: 15px;
+}

@@ -18,7 +18,7 @@ class Client extends Eloquent implements UserInterface, RemindableInterface {
         
         public function projects()
         {
-            return $this->hasMany('Project');
+            return $this->hasMany('Project', 'client_id');
         }
 
 }

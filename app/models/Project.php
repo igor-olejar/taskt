@@ -23,7 +23,7 @@ class Project extends Eloquent implements UserInterface, RemindableInterface {
         
         public function client()
         {
-            return $this->belongsTo('Client');
+            return $this->belongsTo('Client', 'client_id');
         }
         
         public function tasks()
