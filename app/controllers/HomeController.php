@@ -17,7 +17,7 @@ class HomeController extends BaseController {
 
 	public function showOptions()
 	{
-		echo 'options';
+		return View::make('welcome')->withTitle('Home');
 	}
 
 }

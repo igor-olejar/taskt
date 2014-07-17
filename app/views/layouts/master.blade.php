@@ -6,13 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Taskt">
         <meta name="author" content="Igor Olejar">
-        <title></title>
+        <title>{{{ $title }}}</title>
         
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        
+        <!-- Custom styles -->
+        {{ HTML::style('css/custom.css') }}
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,8 +33,8 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="about">About</a></li>
+                        <li @if ($title == 'Home') class="active" @endif><a href="/">Home</a></li>
+                        <li @if ($title == 'About') class="active" @endif><a href="about">About</a></li>
                     </ul>
                 </div>
             </div>
