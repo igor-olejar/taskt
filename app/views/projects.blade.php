@@ -34,8 +34,8 @@
                             @endif
                         </td>
                         <td>
-                            <a href="projects/edit/{{ $project->id }}">Edit</a> / 
-                            <a href="projects/delete/{{ $project->id }}">Delete</a>
+                            <a href="projects/{{ $project->id }}/edit">Edit</a> / 
+                            <a href="projects/{{ $project->id }}/delete">Delete</a>
                         </td>
                         <?php $i++; ?>
                     </tr>

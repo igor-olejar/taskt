@@ -29,6 +29,10 @@ Route::get("logout", function(){
     return Redirect::to('login');
 });
 
+// Projects
 Route::get("projects", array('uses' => 'ProjectController@showProjects'));
+Route::get("projects/{id}/edit", array('uses' => 'ProjectController@editProject'));
+Route::put("projects/{id}/update", array('as' => 'project.update', 'uses' => 'ProjectController@updateProject'));
+
 Route::get("clients", array('uses' => 'ClientController@showClients'));
 Route::get("tasks", array('uses' => 'TaskController@showTasks'));
