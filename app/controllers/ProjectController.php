@@ -64,6 +64,16 @@ class ProjectController extends BaseController {
         return Redirect::to('projects');
     }
     
+    public function deleteProject($id)
+    {
+        $project = Project::find($id);
+        $project->delete();
+        
+        Session::flash('msg', 'Project deleted successfully.');
+        
+        return Redirect::to('projects');
+    }
+    
     private function _saveProject($project)
     {
         $validation = Validator::make(Input::all(), $this->rules);

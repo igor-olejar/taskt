@@ -45,6 +45,8 @@ Route::post("projects/add", array(
     'uses' => 'ProjectController@saveProject'
 ));
 
+Route::get("projects/{id}/delete", array('uses' => 'ProjectController@deleteProject'));
+
 Route::get("clients", array('uses' => 'ClientController@showClients'));
 
 Route::get("tasks", array('uses' => 'TaskController@showTasks'));
