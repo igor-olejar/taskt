@@ -30,7 +30,7 @@ Route::get("logout", function(){
 });
 
 // Projects
-Route::get("projects", array('uses' => 'ProjectController@showProjects'));
+Route::get("projects", array('as' => 'projects', 'uses' => 'ProjectController@showProjects'));
 Route::get("projects/{id}/edit", array('uses' => 'ProjectController@editProject'));
 Route::put("projects/{id}/update", array(
     'as' => 'project.update', 
