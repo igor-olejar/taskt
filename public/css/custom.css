@@ -22,3 +22,8 @@
 .contextual {
     padding: 15px;
 }
+
+/* Errors */
+.form-error {
+    color: red;
+}

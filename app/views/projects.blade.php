@@ -1,6 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
+    @if (Session::get('msg'))
+    <p class="bg-info contextual">
+        {{ Session::get('msg') }}
+    </p>
+    @endif
+    
     <h1>Projects</h1>
     <p>
         <a href="projects/add" class="btn btn-default">Add Project</a>

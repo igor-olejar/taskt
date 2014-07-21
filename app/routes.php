@@ -31,11 +31,14 @@ Route::get("logout", function(){
 
 // Projects
 Route::get("projects", array('as' => 'projects', 'uses' => 'ProjectController@showProjects'));
+
 Route::get("projects/{id}/edit", array('uses' => 'ProjectController@editProject'));
-Route::put("projects/{id}/update", array(
+
+Route::post("projects/{id}/update", array(
     'as' => 'project.update', 
     'uses' => 'ProjectController@updateProject'
 ));
 
 Route::get("clients", array('uses' => 'ClientController@showClients'));
+
 Route::get("tasks", array('uses' => 'TaskController@showTasks'));

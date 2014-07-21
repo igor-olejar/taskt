@@ -1,12 +1,19 @@
 @extends('layouts.master')
 
 @section('content')
+@if (Session::get('msg_errors'))
+    <p class="bg-danger contextual">
+        {{ Session::get('msg_errors') }}
+    </p>
+@endif
+
 <h1>Editing {{ $project->name }}</h1>
 <p>
     {{ Form::model($project, array('role' => 'form', 'route' => array('project.update', $project->id))) }}
         <div class="form-group">
-            {{ Form::label('name', 'Project Name') }}
+            {{ Form::label('name', 'Project Name*') }}
             {{ Form::text('name', $project->name, array('class' => 'form-control', 'id' => 'project-name')) }}
+            {{ $errors->first('name', '<span class="form-error">:message</span>') }}
         </div>
         <div class="form-group">
             {{ Form::label('description', 'Description') }}
@@ -25,15 +32,16 @@
         </div>
         <div class="form-group">
             {{ Form::label('start_date', 'Start Date') }}
-            {{ Form::text('start_date', $project->start_date, array('class' => 'form-control datepicker', 'id' => 'project-start-date')) }}
+            {{ Form::text('start_date', date('d/m/Y',strtotime($project->start_date)), array('class' => 'form-control datepicker', 'id' => 'project-start-date')) }}
         </div>
         <div class="form-group">
             {{ Form::label('end_date', 'End Date') }}
-            {{ Form::text('end_date', $project->end_date, array('class' => 'form-control datepicker', 'id' => 'project-end-date')) }}
+            {{ Form::text('end_date', date('d/m/Y',strtotime($project->end_date)), array('class' => 'form-control datepicker', 'id' => 'project-end-date')) }}
         </div>
         <div class="form-group">
-            {{ Form::label('rate', 'Hourly Rate') }}
+            {{ Form::label('rate', 'Hourly Rate*') }}
             {{ Form::text('rate', $project->rate, array('class' => 'form-control', 'id' => 'project-rate')) }}
+            {{ $errors->first('rate', '<span class="form-error">:message</span>') }}
         </div>
         <div class="form-group">
             {{ Form::label('roundup', 'Roundup') }}
