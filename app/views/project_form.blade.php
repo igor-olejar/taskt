@@ -1,5 +1,5 @@
 <p>
-    {{ Form::model($project, array('role' => 'form', 'route' => array('project.update', $project->id))) }}
+    {{ Form::model($project, array('role' => 'form', 'route' => array($route, $project->id))) }}
         <div class="form-group">
             {{ Form::label('name', 'Project Name*') }}
             {{ Form::text('name', $project->name, array('class' => 'form-control', 'id' => 'project-name')) }}
@@ -22,11 +22,13 @@
         </div>
         <div class="form-group">
             {{ Form::label('start_date', 'Start Date') }}
-            {{ Form::text('start_date', date('d/m/Y',strtotime($project->start_date)), array('class' => 'form-control datepicker', 'id' => 'project-start-date')) }}
+            <?php $sd = ($project->start_date)? date('d/m/Y',strtotime($project->start_date)): ""; ?>
+            {{ Form::text('start_date', $sd, array('class' => 'form-control datepicker', 'id' => 'project-start-date')) }}
         </div>
         <div class="form-group">
             {{ Form::label('end_date', 'End Date') }}
-            {{ Form::text('end_date', date('d/m/Y',strtotime($project->end_date)), array('class' => 'form-control datepicker', 'id' => 'project-end-date')) }}
+            <?php $ed = ($project->end_date)? date('d/m/Y',strtotime($project->end_date)): ""; ?>
+            {{ Form::text('end_date', $ed, array('class' => 'form-control datepicker', 'id' => 'project-end-date')) }}
         </div>
         <div class="form-group">
             {{ Form::label('rate', 'Hourly Rate*') }}
@@ -35,7 +37,8 @@
         </div>
         <div class="form-group">
             {{ Form::label('roundup', 'Roundup') }}
-            {{ Form::select('roundup', array('quarter_hour' => 'Quarter Hour', 'half_hour' => 'Half Hour', 'hour' => 'Hour'), $project->roundup, array('class' => 'form-control', 'id' => 'project-roundup')) }}
+            <?php $selected = ($project->roundup)? : 'hour'; ?>
+            {{ Form::select('roundup', array('quarter_hour' => 'Quarter Hour', 'half_hour' => 'Half Hour', 'hour' => 'Hour'), $selected, array('class' => 'form-control', 'id' => 'project-roundup')) }}
         </div>
 
         <div class="form-group">
