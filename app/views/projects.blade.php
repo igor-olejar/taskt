@@ -41,7 +41,7 @@
                         </td>
                         <td>
                             <a href="projects/{{ $project->id }}/edit">Edit</a> / 
-                            <a href="projects/{{ $project->id }}/delete">Delete</a>
+                            <a href="projects/{{ $project->id }}/delete" class="delete-link">Delete</a>
                         </td>
                         <?php $i++; ?>
                     </tr>

@@ -54,6 +54,7 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <!-- Datepicker -->
         {{ HTML::script('js/bootstrap-datepicker.js') }}
+        {{ HTML::script('js/custom.js') }}
         
         <script type="text/javascript">
             $('.datepicker').datepicker({

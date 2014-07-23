@@ -6,6 +6,10 @@
             {{ Session::get('msg_errors') }}
         </p>
     @endif
+    
+    <p>
+        {{ link_to_route('projects', 'List of projects') }}
+    </p>
 
     <h1>Add New Project</h1>
     @include('project_form')
