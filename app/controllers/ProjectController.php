@@ -12,7 +12,7 @@ class ProjectController extends BaseController {
     public function showProjects()
     {
         // get existing projects
-        $projects = Project::all();
+        $projects = Project::orderBy('name')->get();
         
         // show them
         return View::make('projects', array('projects' => $projects))->withTitle('Projects');
@@ -57,7 +57,9 @@ class ProjectController extends BaseController {
     {
         $project = new Project;
         
-        $this->_saveProject($project, 'projects/add');
+        if (!$this->_saveProject($project)) {
+            return Redirect::to('projects/add')->withInput()->withErrors($this->errors);
+        }
         
         Session::flash('msg', 'Project added successfully');
         
