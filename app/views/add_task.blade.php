@@ -11,6 +11,6 @@
         {{ link_to_route('tasks', 'List of tasks') }}
     </p>
 
-    <h1>Editing Task ID {{ $task->id }}</h1>
+    <h1>Add New Task</h1>
     @include('task_form')
 @stop

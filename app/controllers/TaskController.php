@@ -44,6 +44,41 @@ class TaskController extends BaseController {
         return Redirect::to('tasks');
     }
     
+    public function addTask()
+    {
+        $projects = Project::all();
+        
+        return View::make('add_task')
+                ->withTask(new Task)
+                ->withProjects($projects)
+                ->withTitle('Add New Task ')
+                ->withRoute('task.add');
+    }
+    
+    public function saveTask()
+    {
+        $task = new Task;
+        
+        if (!$this->_saveTask($task)) {
+            return Redirect::to('tasks/add')->withInput()->withErrors($this->errors);
+        }
+        
+        Session::flash('msg', 'Task added successfully');
+        
+        return Redirect::to('tasks');
+    }
+    
+    public function deleteTask($id)
+    {
+        $task = Task::find($id);
+        $task->delete();
+        
+        Session::flash('msg', 'Task deleted successfully.');
+        
+        return Redirect::to('tasks');
+    }
+    
+    
     private function _saveTask($task)
     {
         $validation = Validator::make(Input::all(), $this->rules);
