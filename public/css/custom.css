@@ -27,3 +27,9 @@
 .form-error {
     color: red;
 }
+
+/* Form Controls */
+.short-menu {
+    width: 15%;
+    display: inline;
+}

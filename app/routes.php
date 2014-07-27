@@ -76,4 +76,30 @@ Route::get("clients/{id}/delete", array(
     'uses'  =>  'ClientController@deleteClient'
 ));
 
-Route::get("tasks", array('uses' => 'TaskController@showTasks'));
+// Tasks
+Route::get("tasks", array(
+    'as'    => 'tasks',
+    'uses'  => 'TaskController@showTasks'
+));
+
+Route::get("tasks/{id}/edit", array(
+    'uses'  => 'TaskController@editTask'
+));
+
+Route::post("tasks/{id}/update", array(
+    'as'    =>  'task.update',
+    'uses'  =>  'TaskController@updateTask'
+));
+
+Route::get("tasks/add", array(
+    'uses'  =>  'TaskController@addTask'
+));
+
+Route::post("tasks/add", array(
+    'as'    =>  'task.add',
+    'uses'  =>  'TaskController@saveTask'
+));
+
+Route::get("tasks/{id}/delete", array(
+    'uses'  =>  'TaskController@deleteTask'
+));
