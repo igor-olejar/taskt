@@ -10,12 +10,29 @@ class TaskController extends BaseController {
     
     public function showTasks()
     {
+//        if (Input::get("status")) {
+//            $tasks = Task::orderBy('updated_at')->paginate(10);
+//            $tasks->where('status', '=', Input::get('status'));
+//        }
         $tasks = Task::orderBy('updated_at')->paginate(10);
+        
+        $out = array();
+        foreach ($tasks as $task) {
+            if (
+                    (Input::get('status') && $task->status == Input::get('status')) ||
+                    (Input::get('project') && $task->project->id == Input::get('project')) ||
+                    (Input::get('client') && $task->project->client->id == Input::get('client')) ||
+                    (!Input::get('client') && !Input::get('project') && !Input::get('client'))
+                ) 
+            {
+                $out[] = $task;
+            }
+        }
         
         $clients = Client::all();
         $projects = Project::all();
         
-        return View::make('tasks')->withTasks($tasks)->withClients($clients)->withProjects($projects)->withTitle('Tasks');
+        return View::make('tasks')->withTasks($out)->withClients($clients)->withProjects($projects)->withTitle('Tasks');
     }
     
     public function editTask($id)

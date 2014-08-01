@@ -8,5 +8,17 @@ $(document).ready(function(){
            window.location.href = $(this).attr('href');
        }
    }); 
+   
+   $('.filter').change(function(){
+       var current_url = window.location.href;
+       
+       console.log(current_url.indexOf("?"));
+       
+       if (current_url.indexOf("?") > 0) {
+           window.location.href = current_url + "&" + $(this).attr('type') + "=" + $(this).val();
+       } else {
+           window.location.href = current_url + "?" + $(this).attr('type') + "=" + $(this).val();
+       }
+   });
     
 });

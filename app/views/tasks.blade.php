@@ -24,16 +24,27 @@
                     $options[$client->id] = $client->name;
                 } unset($client);
                 
-                echo Form::select('client_id', $options, "", array('class' => 'form-control short-menu', 'id' => 'task-client-filter'));
+                echo Form::select('client_id', $options, Input::get("client"), array('type' => 'client', 'class' => 'form-control short-menu filter', 'id' => 'task-client-filter'));
             ?>
-            Project
+            &nbsp;Project
             <?php
                 $options = array(0 => 'Select');
                 foreach ($projects as $project) {
                     $options[$project->id] = $project->name;
                 } unset($project);
                 
-                echo Form::select('project_id', $options, "", array('class' => 'form-control short-menu', 'id' => 'task-project-filter'));
+                echo Form::select('project_id', $options, Input::get("project"), array('type' => 'project', 'class' => 'form-control short-menu filter', 'id' => 'task-project-filter'));
+            ?>
+            &nbsp;Status
+            <?php
+                $options = array(
+                    0               => 'Select',
+                    'todo'         => 'To do',
+                    'in progress'   => 'In progess',
+                    'completed'     => 'Completed'
+                );
+                
+                echo Form::select('status_id', $options, Input::get("status"), array('type' => 'status', 'class' => 'form-control short-menu filter', 'id' => 'task-status-filter'));
             ?>
         </p>
         <p>
@@ -57,7 +68,9 @@
                         <td>{{ $task->status }}</td>
                         <td>
                             <a href="tasks/{{ $task->id }}/edit">Edit</a> / 
-                            <a href="tasks/{{ $task->id }}/delete" class="delete-link">Delete</a>
+                            <a href="tasks/{{ $task->id }}/delete" class="delete-link">Delete</a> Action: 
+                            <span id="play-pause" class="glyphicon glyphicon-play"></span>
+                            <span id="stop" class="glyphicon glyphicon-stop"></span>
                         </td>
                     </tr>
                     @endforeach
