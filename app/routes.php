@@ -103,3 +103,12 @@ Route::post("tasks/add", array(
 Route::get("tasks/{id}/delete", array(
     'uses'  =>  'TaskController@deleteTask'
 ));
+
+// Checkins
+Route::post("checkin/start", array(
+    'uses'  =>  'CheckinController@startCheckin'
+));
+
+Route::post("checkin/{id}/end", array(
+    'uses'  =>  'CheckinController@endCheckin'
+));
