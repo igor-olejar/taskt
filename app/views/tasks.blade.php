@@ -17,14 +17,14 @@
     @else
         <p>
             <strong>Filter by:</strong>
-            Client
+<!--            Client-->
             <?php
-                $options = array(0 => 'Select');
-                foreach ($clients as $client) {
-                    $options[$client->id] = $client->name;
-                } unset($client);
-                
-                echo Form::select('client_id', $options, Input::get("client"), array('type' => 'client', 'class' => 'form-control short-menu filter', 'id' => 'task-client-filter'));
+//                $options = array(0 => 'Select');
+//                foreach ($clients as $client) {
+//                    $options[$client->id] = $client->name;
+//                } unset($client);
+//                
+//                echo Form::select('client_id', $options, Input::get("client"), array('type' => 'client', 'class' => 'form-control short-menu filter', 'id' => 'task-client-filter'));
             ?>
             &nbsp;Project
             <?php
@@ -46,6 +46,7 @@
                 
                 echo Form::select('status_id', $options, Input::get("status"), array('type' => 'status', 'class' => 'form-control short-menu filter', 'id' => 'task-status-filter'));
             ?>
+            {{ Form::button('Clear Filters', array('id'=>'clear-filters', 'class'=>'btn btn-default')) }}
         </p>
         <p>
             <table class="table">
@@ -68,9 +69,12 @@
                         <td>{{ $task->status }}</td>
                         <td>
                             <a href="tasks/{{ $task->id }}/edit">Edit</a> / 
-                            <a href="tasks/{{ $task->id }}/delete" class="delete-link">Delete</a> Action: 
-                            <span id="play-pause" class="glyphicon glyphicon-play"></span>
-                            <span id="stop" class="glyphicon glyphicon-stop"></span>
+                            <a href="tasks/{{ $task->id }}/delete" class="delete-link">Delete</a> 
+                            @if ($task->status != 'completed')
+                            Action: 
+                            <span class="glyphicon glyphicon-play"></span>
+                            <span class="glyphicon glyphicon-stop"></span>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

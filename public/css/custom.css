@@ -33,3 +33,20 @@
     width: 15%;
     display: inline;
 }
+
+/* Glyphicons */
+.glyphicon {
+    cursor: pointer;
+}
+
+.glyphicon-play {
+    color: green;
+}
+
+.glyphicon-pause {
+    color: orange;
+}
+
+.glyphicon-stop {
+    color: red;
+}

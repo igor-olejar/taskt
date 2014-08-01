@@ -12,13 +12,31 @@ $(document).ready(function(){
    $('.filter').change(function(){
        var current_url = window.location.href;
        
-       console.log(current_url.indexOf("?"));
-       
        if (current_url.indexOf("?") > 0) {
            window.location.href = current_url + "&" + $(this).attr('type') + "=" + $(this).val();
        } else {
            window.location.href = current_url + "?" + $(this).attr('type') + "=" + $(this).val();
        }
+   });
+   
+   $('#clear-filters').click(function(){
+       window.location.href = '/tasks';
+   });
+   
+   $('.glyphicon-play').click(function(){
+       $(this).toggleClass('glyphicon-pause');
+       
+       if ($(this).hasClass('glyphicon-play') && !$(this).hasClass('glyphicon-pause')) {
+           console.log('pause recording');
+       }
+       
+       if ($(this).hasClass('glyphicon-pause')) {
+           console.log('start recording');
+       }
+   });
+   
+   $('.glyphicon-stop').click(function(){
+       
    });
     
 });
