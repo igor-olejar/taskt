@@ -30,7 +30,7 @@
                     @foreach ($projects as $project)
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $project->name }}</td>
+                        <td>{{ $project->name }} (<a href="tasks?project={{ $project->id }}">Tasks</a>)</td>
                         <td>{{ $project->client->name }}</td>
                         <td>
                             @if (strtotime($project->end_date) < time())

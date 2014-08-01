@@ -30,7 +30,7 @@
                     @foreach ($clients as $client)
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $client->name }}</td>
+                        <td>{{ $client->name }} (<a href="projects?client={{ $client->id }}">Projects</a>)</td>
                         <td>{{ $client->description }}</td>
                         <td><a href="{{ url($client->website) }}" target="_blank">{{ $client->website }}</a></td>
                         <td>

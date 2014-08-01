@@ -10,7 +10,7 @@ class TaskController extends BaseController {
     
     public function showTasks()
     {
-        $tasks = Task::orderBy('updated_at')->with('project');
+        $tasks = Task::orderBy('updated_at');
         
         if (Input::get('status')) {
             $tasks = $tasks->where('status','=',Input::get('status'));

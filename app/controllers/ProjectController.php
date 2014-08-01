@@ -12,7 +12,13 @@ class ProjectController extends BaseController {
     public function showProjects()
     {
         // get existing projects
-        $projects = Project::orderBy('name')->get();
+        $projects = Project::orderBy('name');
+        
+        if (Input::get('client')) {
+            $projects = $projects->where('client_id','=',Input::get('client'));
+        }
+        
+        $projects = $projects->get();
         
         // show them
         return View::make('projects', array('projects' => $projects))->withTitle('Projects');
