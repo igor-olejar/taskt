@@ -18,7 +18,10 @@
     </p>
     
     <p>
-        {{ Form::submit('Log in', array('class' => 'btn btn-lg btn-default btn-block')) }}
+        {{ Form::submit('Go', array('class' => 'btn btn-lg btn-default btn-block')) }}
+    </p>
+    <p>
+        <a href="signup">Sign up</a>
     </p>
     {{ Form::close() }}
 @stop

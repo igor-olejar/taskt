@@ -29,6 +29,8 @@ Route::get("logout", function(){
     return Redirect::to('login');
 });
 
+Route::get("signup", array('uses' => 'UserController@createUser'));
+
 // Projects
 Route::get("projects", array('as' => 'projects', 'uses' => 'ProjectController@showProjects'));
 
