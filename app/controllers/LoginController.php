@@ -38,9 +38,11 @@ class LoginController extends BaseController {
             
             // log in the user
             if (Auth::attempt($userdata)) {
-                return Redirect::to('/');
+                return Redirect::intended('/');
             } else {
-                return Redirect::to('login');
+                return Redirect::back()
+                        ->withErrors(array("password" => "Invalid username or password"))
+                        ->withInput(Input::except('password'));
             }
         }
     }
