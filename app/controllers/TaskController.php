@@ -36,6 +36,9 @@ class TaskController extends BaseController {
         $clients = Client::all();
         $projects = Project::all();
         
+        // before showing the view, close any open Checkins
+        CheckinController::closeAll();
+        
         return View::make('tasks')->withTasks($tasks)->withClients($clients)->withProjects($projects)->withTitle('Tasks');
     }
     

@@ -18,13 +18,13 @@ Route::get("/", array(
 
 Route::get("login", array('uses' => 'LoginController@showLogin'));
 Route::post("login", array('uses' => 'LoginController@doLogin'));
-Route::post("logout", array('usees' => 'LoginController@doLogout'));
 
 Route::get("about", function(){
     return View::make('about')->withTitle('About');
 });
 
 Route::get("logout", function(){
+    CheckinController::closeAll();
     Auth::logout();
     return Redirect::to('login');
 });

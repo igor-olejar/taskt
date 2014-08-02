@@ -22,4 +22,15 @@ class CheckinController extends BaseController {
         $checkin->end = time();
         $checkin->save();
     }
+    
+    public static function closeAll()
+    {
+        // find all checkins for which 'end' is empty
+        $checkins = Checkin::where('end','=','0')->get();
+        
+        foreach ($checkins as $checkin) {
+            $checkin->end = time();
+            $checkin->save();
+        } unset($checkin);
+    }
 }
