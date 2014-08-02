@@ -24,14 +24,31 @@ $(document).ready(function(){
    });
    
    $('.glyphicon-play').click(function(){
+       
+       // get task id
+       var task_id = $(this).attr('task_id');
+       
+       // togle the class that shows either play or pause button
        $(this).toggleClass('glyphicon-pause');
        
+       // stopping the checkin
        if ($(this).hasClass('glyphicon-play') && !$(this).hasClass('glyphicon-pause')) {
-           console.log('pause recording');
+           var request = $.ajax({
+               url:     "checkin/" + $(this).attr('checkin_id') + "/end",
+               type:    "post"
+           });
        }
        
+       // we are starting a checkin
        if ($(this).hasClass('glyphicon-pause')) {
-           console.log('start recording');
+           var request = $.ajax({
+               url:     "checkin/" + task_id + "/start",
+               type:    "post"
+           });
+           
+           request.done(function(msg){
+               $("#task_" + task_id).attr('checkin_id', msg);
+           });
        }
    });
    

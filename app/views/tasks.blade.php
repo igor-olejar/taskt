@@ -72,8 +72,8 @@
                             <a href="tasks/{{ $task->id }}/delete" class="delete-link">Delete</a> 
                             @if ($task->status != 'completed')
                             Action: 
-                            <span class="glyphicon glyphicon-play"></span>
-                            <span class="glyphicon glyphicon-stop"></span>
+                            <span id="task_{{ $task->id }}" class="glyphicon glyphicon-play" task_id="{{ $task->id }}" checkin_id=""></span>
+                            <span id="task_stop_{{ $task->id }}" class="glyphicon glyphicon-stop"></span>
                             @endif
                         </td>
                     </tr>
