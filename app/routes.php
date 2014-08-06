@@ -30,6 +30,10 @@ Route::get("logout", function(){
 });
 
 Route::get("signup", array('uses' => 'UserController@createUser'));
+Route::post("signup", array(
+    'uses'  =>  'UserController@saveUser',
+    'as'    =>  'user.save'
+));
 
 // Projects
 Route::get("projects", array('as' => 'projects', 'uses' => 'ProjectController@showProjects'));
