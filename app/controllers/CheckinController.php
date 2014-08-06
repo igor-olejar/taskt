@@ -1,6 +1,7 @@
 <?php
 
 class CheckinController extends BaseController {
+    
     public function startCheckin($task_id)
     {
         // insert new checkin

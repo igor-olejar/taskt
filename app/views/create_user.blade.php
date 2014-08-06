@@ -34,13 +34,13 @@
 
             <div class="form-group">
                 {{ Form::label('password', 'Password*') }}
-                {{ Form::password('password', '', array('class' => 'form-control')) }}
+                {{ Form::password('password', array('class' => 'form-control')) }}
                 {{ $errors->first('password', '<span class="form-error">:message</span>') }}
             </div>
 
             <div class="form-group">
                 {{ Form::label('password_repeat', 'Repeat Password*') }}
-                {{ Form::password('password_repeat', '', array('class' => 'form-control')) }}
+                {{ Form::password('password_repeat', array('class' => 'form-control')) }}
                 {{ $errors->first('password_repeat', '<span class="form-error">:message</span>') }}
             </div>
 
