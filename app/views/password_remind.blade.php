@@ -3,6 +3,8 @@
 @section('content')
     <h1>Password Reminder</h1>
     <p>Please enter your password below. A password reminder will be sent to you.</p>
+    <?php if (isset($status)) echo $status; ?><br />
+    <?php if (isset($error)) echo $error; ?>
     <p>
         <form action="{{ action('RemindersController@postRemind') }}" method="POST">
             <div class="form-group">
