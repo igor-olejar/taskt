@@ -36,85 +36,93 @@ Route::post("signup", array(
 ));
 
 // Projects
-Route::get("projects", array('as' => 'projects', 'uses' => 'ProjectController@showProjects'));
+Route::group(array('before' => 'auth'), function(){
+    Route::get("projects", array('as' => 'projects', 'uses' => 'ProjectController@showProjects'));
 
-Route::get("projects/{id}/edit", array('uses' => 'ProjectController@editProject'));
+    Route::get("projects/{id}/edit", array('uses' => 'ProjectController@editProject'));
 
-Route::post("projects/{id}/update", array(
-    'as'    => 'project.update', 
-    'uses'  => 'ProjectController@updateProject'
-));
+    Route::post("projects/{id}/update", array(
+        'as'    => 'project.update',
+        'uses'  => 'ProjectController@updateProject'
+    ));
 
-Route::get("projects/add", array('uses' => 'ProjectController@addProject'));
+    Route::get("projects/add", array('uses' => 'ProjectController@addProject'));
 
-Route::post("projects/add", array(
-    'as' => 'project.add', 
-    'uses' => 'ProjectController@saveProject'
-));
+    Route::post("projects/add", array(
+        'as' => 'project.add',
+        'uses' => 'ProjectController@saveProject'
+    ));
 
-Route::get("projects/{id}/delete", array('uses' => 'ProjectController@deleteProject'));
+    Route::get("projects/{id}/delete", array('uses' => 'ProjectController@deleteProject'));
+});
+
 
 // Clients
-Route::get("clients", array(
-    'as'    => 'clients',
-    'uses'  => 'ClientController@showClients'
-));
+Route::group(array('before' => 'auth'), function(){
+    Route::get("clients", array(
+        'as'    => 'clients',
+        'uses'  => 'ClientController@showClients'
+    ));
 
-Route::get("clients/{id}/edit", array(
-    'uses'  => 'ClientController@editClient'
-));
+    Route::get("clients/{id}/edit", array(
+        'uses'  => 'ClientController@editClient'
+    ));
 
-Route::post("clients/{id}/update", array(
-    'as'    =>  'client.update',
-    'uses'  =>  'ClientController@updateClient'
-));
+    Route::post("clients/{id}/update", array(
+        'as'    =>  'client.update',
+        'uses'  =>  'ClientController@updateClient'
+    ));
 
-Route::get("clients/add", array(
-    'uses'  =>  'ClientController@addClient'
-));
+    Route::get("clients/add", array(
+        'uses'  =>  'ClientController@addClient'
+    ));
 
-Route::post("clients/add", array(
-    'as'    =>  'client.add',
-    'uses'  =>  'ClientController@saveClient'
-));
+    Route::post("clients/add", array(
+        'as'    =>  'client.add',
+        'uses'  =>  'ClientController@saveClient'
+    ));
 
-Route::get("clients/{id}/delete", array(
-    'uses'  =>  'ClientController@deleteClient'
-));
+    Route::get("clients/{id}/delete", array(
+        'uses'  =>  'ClientController@deleteClient'
+    ));
+});
+
 
 // Tasks
-Route::get("tasks", array(
-    'as'    => 'tasks',
-    'uses'  => 'TaskController@showTasks'
-));
+Route::group(array('before' => 'auth'), function(){
+    Route::get("tasks", array(
+        'as'    => 'tasks',
+        'uses'  => 'TaskController@showTasks'
+    ));
 
-Route::get("tasks/{id}/edit", array(
-    'uses'  => 'TaskController@editTask'
-));
+    Route::get("tasks/{id}/edit", array(
+        'uses'  => 'TaskController@editTask'
+    ));
 
-Route::post("tasks/{id}/update", array(
-    'as'    =>  'task.update',
-    'uses'  =>  'TaskController@updateTask'
-));
+    Route::post("tasks/{id}/update", array(
+        'as'    =>  'task.update',
+        'uses'  =>  'TaskController@updateTask'
+    ));
 
-Route::get("tasks/add", array(
-    'uses'  =>  'TaskController@addTask'
-));
+    Route::get("tasks/add", array(
+        'uses'  =>  'TaskController@addTask'
+    ));
 
-Route::post("tasks/add", array(
-    'as'    =>  'task.add',
-    'uses'  =>  'TaskController@saveTask'
-));
+    Route::post("tasks/add", array(
+        'as'    =>  'task.add',
+        'uses'  =>  'TaskController@saveTask'
+    ));
 
-Route::get("tasks/{id}/delete", array(
-    'uses'  =>  'TaskController@deleteTask'
-));
+    Route::get("tasks/{id}/delete", array(
+        'uses'  =>  'TaskController@deleteTask'
+    ));
 
-// Checkins
-Route::post("checkin/{id}/start", array(
-    'uses'  =>  'CheckinController@startCheckin'
-));
+    // Checkins
+    Route::post("checkin/{id}/start", array(
+        'uses'  =>  'CheckinController@startCheckin'
+    ));
 
-Route::post("checkin/{id}/end", array(
-    'uses'  =>  'CheckinController@endCheckin'
-));
+    Route::post("checkin/{id}/end", array(
+        'uses'  =>  'CheckinController@endCheckin'
+    ));
+});
