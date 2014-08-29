@@ -116,8 +116,10 @@ Route::group(array('before' => 'auth'), function(){
     Route::get("tasks/{id}/delete", array(
         'uses'  =>  'TaskController@deleteTask'
     ));
+});
 
-    // Checkins
+// Checkins
+Route::group(array('before' => 'auth'), function(){
     Route::post("checkin/{id}/start", array(
         'uses'  =>  'CheckinController@startCheckin'
     ));
@@ -126,3 +128,12 @@ Route::group(array('before' => 'auth'), function(){
         'uses'  =>  'CheckinController@endCheckin'
     ));
 });
+
+// Password Reminder
+Route::get("password/reminder", array(
+    'uses'      =>  'RemindersController@getRemind'
+));
+
+Route::post("password/reminder", array(
+    'uses'      =>  'RemindersController@postRemind'
+));

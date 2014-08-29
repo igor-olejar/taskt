@@ -8,20 +8,23 @@
         {{ $errors->first('username') }}<br />
         {{ $errors->first('password') }}
     </p>
-    
+
     <p>
         {{ Form::text('username', Input::old('username'), array('placeholder' => 'Username', 'class' => 'form-control')) }}
     </p>
-    
+
     <p>
         {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Password')) }}
     </p>
-    
+
     <p>
         {{ Form::submit('Go', array('class' => 'btn btn-lg btn-default btn-block')) }}
     </p>
     <p>
         <a href="signup">Sign up</a>
+    </p>
+    <p>
+        <a href="password/reminder">Forgotten password?</a>
     </p>
     {{ Form::close() }}
 @stop
