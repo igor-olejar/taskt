@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"require": {
 		"raveren/kint": "dev-master",
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"cangelis/l4pdf": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
