@@ -6,7 +6,8 @@
 	"require": {
 		"raveren/kint": "dev-master",
 		"laravel/framework": "4.2.*",
-		"cangelis/l4pdf": "dev-master"
+		"cangelis/l4pdf": "dev-master",
+		"codeception/codeception": "*"
 	},
 	"autoload": {
 		"classmap": [
